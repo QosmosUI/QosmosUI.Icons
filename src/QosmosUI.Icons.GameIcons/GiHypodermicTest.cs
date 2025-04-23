@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.GameIcons;
+
+public class GiHypodermicTest : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 512 512";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M429.125 19.313l-103.22 117.812-29.5-25.938-7-6.156-6.155 7-157.125 177.845c-1.513-12.86-7.577-25.217-18.03-34.375-11.208-9.816-25.404-14.166-39.25-13.25-13.85.916-27.342 7.106-37.157 18.313-19.632 22.413-17.35 56.773 5.062 76.406 20.25 17.736 50.262 17.596 70.344.874l18.28 16.062L63.19 424.5 27.28 393.094c-43.194 49.26 52.96 137.527 98.19 85.937l-35.72-31.25 62.094-70.624 15.656 13.75c-13.85 22.104-10.03 51.822 10.188 69.53 22.412 19.634 56.774 17.353 76.406-5.06 19.63-22.415 17.35-56.775-5.063-76.407-9.838-8.62-21.997-13.02-34.186-13.345l155.97-176.594 6.186-7.03-7.03-6.156-30-26.375L443.155 31.624l-14.03-12.313zM448 59.374c0 68.735-44.594 97.895-44.594 138.656 0 24.618 19.98 44.564 44.594 44.564 24.615 0 44.594-19.946 44.594-44.563 0-44-44.594-67.328-44.594-138.655zM196.656 238.28l59.594 52.19-14.28 16.155-59.595-52.188 14.28-16.156zM71.75 260.72c8.49-.152 17.087 2.76 24.03 8.842 14.816 12.978 16.29 35.216 3.314 50.032-12.977 14.816-35.216 16.29-50.03 3.312-14.817-12.977-16.29-35.215-3.314-50.03 6.49-7.41 15.277-11.497 24.313-12.095.564-.036 1.12-.05 1.687-.06zm99.97 5.78l17.31 15.188-1.968 2.218-49.312 55.97-17.375-15.25L171.72 266.5zm43.718 38.313l15.875 13.906-51.407 58.186-15.72-13.812 51.25-58.28zm-2.75 79.375c8.49-.155 17.086 2.73 24.03 8.812 14.816 12.977 16.29 35.246 3.313 50.063-12.976 14.816-35.215 16.29-50.03 3.312-12.956-11.35-15.692-29.794-7.5-44.156.005-.01-.005-.025 0-.033l5.25-5.906 4.594-5.186c5.547-4.108 12.037-6.406 18.656-6.844.565-.037 1.12-.052 1.688-.063z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
