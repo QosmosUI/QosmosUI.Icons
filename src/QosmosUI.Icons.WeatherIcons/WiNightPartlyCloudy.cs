@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.WeatherIcons;
+
+public class WiNightPartlyCloudy : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 30 30";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M6.77,19.61c0,0.97,0.35,1.81,1.06,2.52c0.71,0.71,1.55,1.06,2.52,1.06h6.85c0.97,0,1.8-0.35,2.49-1.05	c0.69-0.7,1.04-1.54,1.04-2.53c0-0.48-0.07-0.89-0.21-1.23c0.83-0.53,1.49-1.24,1.97-2.12c0.48-0.88,0.73-1.83,0.73-2.84	c0-0.81-0.16-1.59-0.47-2.33c-0.32-0.74-0.74-1.38-1.28-1.91S20.3,8.22,19.56,7.9c-0.74-0.32-1.51-0.48-2.32-0.48	c-1.09,0-2.1,0.27-3.02,0.81s-1.65,1.27-2.18,2.18c-0.53,0.92-0.79,1.92-0.79,3.01v0.34c-1.01,0.57-1.67,1.41-1.99,2.49	c-0.76,0.24-1.36,0.66-1.81,1.27C7,18.13,6.77,18.83,6.77,19.61z M8.75,19.61c0-0.42,0.13-0.78,0.4-1.08	c0.27-0.3,0.61-0.47,1.02-0.51l0.63-0.08c0.12,0,0.19-0.08,0.19-0.23l0.1-0.56c0.07-0.58,0.31-1.06,0.73-1.44	c0.42-0.39,0.91-0.58,1.48-0.58c0.58,0,1.09,0.19,1.51,0.58c0.43,0.39,0.68,0.87,0.75,1.44l0.08,0.65c0.06,0.15,0.15,0.23,0.25,0.23	h1.31c0.43,0,0.8,0.16,1.12,0.47c0.32,0.31,0.47,0.68,0.47,1.12c0,0.45-0.16,0.83-0.47,1.15s-0.69,0.48-1.12,0.48h-6.85	c-0.45,0-0.83-0.16-1.14-0.48S8.75,20.06,8.75,19.61z M13.18,13.22c0.07-1.09,0.49-2.01,1.27-2.76c0.78-0.74,1.71-1.12,2.8-1.12	c1.11,0,2.06,0.4,2.84,1.19c0.78,0.79,1.17,1.76,1.17,2.89c0,0.7-0.17,1.35-0.51,1.95c-0.34,0.6-0.8,1.08-1.38,1.45	c-0.59-0.49-1.27-0.73-2.03-0.73c-0.29-0.88-0.81-1.57-1.54-2.09c-0.73-0.52-1.56-0.78-2.49-0.78H13.18z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
