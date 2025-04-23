@@ -1,1 +1,29 @@
-<Solution />
+<Solution>
+    <Folder Name="/src/">
+        <Project Path="src\QosmosUI.Icons.AntDesignIcons\QosmosUI.Icons.AntDesignIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.BootstrapIcons\QosmosUI.Icons.BootstrapIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.BoxIcons\QosmosUI.Icons.BoxIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.CircumIcons\QosmosUI.Icons.CircumIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.DevIcons\QosmosUI.Icons.DevIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.Feather\QosmosUI.Icons.Feather.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.FlatColorIcons\QosmosUI.Icons.FlatColorIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.FontAwesome\QosmosUI.Icons.FontAwesome.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.GameIcons\QosmosUI.Icons.GameIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.GrommetIcons\QosmosUI.Icons.GrommetIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.HeroIcons\QosmosUI.Icons.HeroIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.IcoMoonFree\QosmosUI.Icons.IcoMoonFree.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.Icons8LineAwesome\QosmosUI.Icons.Icons8LineAwesome.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.IonIcons\QosmosUI.Icons.IonIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.Lucide\QosmosUI.Icons.Lucide.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.MaterialDesignIcons\QosmosUI.Icons.MaterialDesignIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.OctIcons\QosmosUI.Icons.OctIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.RadixIcons\QosmosUI.Icons.RadixIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.RemixIcons\QosmosUI.Icons.RemixIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.SimpleIcons\QosmosUI.Icons.SimpleIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.TablerIcons\QosmosUI.Icons.TablerIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.Themify\QosmosUI.Icons.Themify.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.TypIcons\QosmosUI.Icons.TypIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.VsCodeIcons\QosmosUI.Icons.VsCodeIcons.csproj" Type="Classic C#" />
+        <Project Path="src\QosmosUI.Icons.WeatherIcons\QosmosUI.Icons.WeatherIcons.csproj" Type="Classic C#" />
+    </Folder>
+</Solution>
