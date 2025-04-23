@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.Icons8LineAwesome;
+
+public class LiaUniregistry : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 32 32";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M 6 4.6992188 L 6 4.8007812 L 11 4.8007812 L 11 4.6992188 L 6 4.6992188 z M 21 4.6992188 L 21 4.8007812 L 26 4.8007812 L 26 4.6992188 L 21 4.6992188 z M 6 6.5 L 6 6.8007812 L 11 6.8007812 L 11 6.5 L 6 6.5 z M 21 6.5 L 21 6.8007812 L 26 6.8007812 L 26 6.5 L 21 6.5 z M 6 8.3007812 L 6 8.6992188 L 11 8.6992188 L 11 8.3007812 L 6 8.3007812 z M 21 8.3007812 L 21 8.6992188 L 26 8.6992188 L 26 8.3007812 L 21 8.3007812 z M 6 10.099609 L 6 10.599609 L 11 10.599609 L 11 10.099609 L 6 10.099609 z M 21 10.099609 L 21 10.599609 L 26 10.599609 L 26 10.099609 L 21 10.099609 z M 6 11.900391 L 6 12.5 L 11 12.5 L 11 11.900391 L 6 11.900391 z M 21 11.900391 L 21 12.5 L 26 12.5 L 26 11.900391 L 21 11.900391 z M 6 13.699219 L 6 14.5 L 11 14.5 L 11 13.699219 L 6 13.699219 z M 21 13.699219 L 21 14.5 L 26 14.5 L 26 13.699219 L 21 13.699219 z M 6 15.5 L 6 16.400391 L 11 16.400391 L 11 15.5 L 6 15.5 z M 21 15.5 L 21 16.400391 L 26 16.400391 L 26 15.5 L 21 15.5 z M 6 17.300781 L 6 17.900391 L 6 18.300781 L 11 18.300781 L 11 18 L 11 17.300781 L 6 17.300781 z M 21 17.300781 L 21 18 L 21 18.300781 L 26 18.300781 L 26 17.900391 L 26 17.300781 L 21 17.300781 z M 6.0996094 19.099609 C 6.0996094 19.499609 6.2007812 19.900781 6.3007812 20.300781 L 11.599609 20.300781 C 11.399609 19.900781 11.199609 19.499609 11.099609 19.099609 L 6.0996094 19.099609 z M 20.900391 19.099609 C 20.800391 19.499609 20.7 19.900781 20.5 20.300781 L 25.800781 20.300781 C 25.900781 19.900781 26 19.499609 26 19.099609 L 20.900391 19.099609 z M 6.4003906 20.900391 C 6.5003906 21.300391 6.7003906 21.799219 6.9003906 22.199219 L 13.300781 22.199219 C 12.800781 21.899219 12.3 21.400391 12 20.900391 L 6.4003906 20.900391 z M 20 20.900391 C 19.6 21.400391 19.199609 21.899219 18.599609 22.199219 L 25.099609 22.199219 C 25.299609 21.799219 25.399609 21.300391 25.599609 20.900391 L 20 20.900391 z M 7.1992188 22.699219 C 7.4992187 23.199219 7.7 23.699609 8 24.099609 L 23.900391 24.099609 C 24.300391 23.699609 24.600781 23.199219 24.800781 22.699219 L 7.1992188 22.699219 z M 8.3007812 24.5 C 8.8007812 25.1 9.4 25.599609 10 26.099609 L 21.900391 26.099609 C 22.500391 25.599609 23.099609 25.1 23.599609 24.5 L 8.3007812 24.5 z M 10.400391 26.300781 C 12.000391 27.400781 13.9 28 16 28 C 18.1 28 19.999609 27.400781 21.599609 26.300781 L 10.400391 26.300781 z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
