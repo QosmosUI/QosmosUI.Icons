@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsAotCompatible>true</IsAotCompatible>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>QosmosUI.Icons</PackageId>
+    <PackageIcon>QosmosUI.png</PackageIcon>
+    <Authors>AerafalGit</Authors>
+    <Company>QosmosUI</Company>
+    <Copyright>Copyright 2025 QosmosUI</Copyright>
+    <PackageTags>Blazor, BlazorServer, BlazorWebAssembly, Components, Icons</PackageTags>
+    <Description>A comprehensive and high-performance icon library for Blazor, inspired by react-icons.</Description>
+    <PackageProjectUrl>https://github.com/QosmosUI/QosmosUI.Icons</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/QosmosUI/QosmosUI.Icons</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath="" />
+    <None Include="..\..\README.md" Pack="true" Visible="false" PackagePath="" />
+    <None Include="..\..\QosmosUI.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QosmosUI.Icons.AntDesignIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.BootstrapIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.BoxIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.CircumIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.DevIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.Feather" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.FlatColorIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.FontAwesome" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.GameIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.GrommetIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.HeroIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.IcoMoonFree" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.Icons8LineAwesome" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.IonIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.Lucide" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.MaterialDesignIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.OctIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.RadixIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.RemixIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.SimpleIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.TablerIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.Themify" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.TypIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.VsCodeIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.WeatherIcons" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
