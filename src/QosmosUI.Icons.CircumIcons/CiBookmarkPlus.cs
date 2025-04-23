@@ -1,0 +1,72 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.CircumIcons;
+
+public class CiBookmarkPlus : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 24 24";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "g");
+		builder.AddAttribute(14, "id", "Bookmark_Plus");
+		builder.AddAttribute(15, "data-name", "Bookmark Plus");
+		builder.OpenElement(16, "g");
+		builder.OpenElement(17, "path");
+		builder.AddAttribute(18, "d", "M17.6,21.938a1.482,1.482,0,0,1-1.011-.4l-4.251-3.9a.5.5,0,0,0-.678,0L7.41,21.538a1.5,1.5,0,0,1-2.517-1.1V4.563a2.5,2.5,0,0,1,2.5-2.5h9.214a2.5,2.5,0,0,1,2.5,2.5V20.435a1.483,1.483,0,0,1-.9,1.375A1.526,1.526,0,0,1,17.6,21.938ZM12,16.5a1.5,1.5,0,0,1,1.018.395L17.269,20.8a.5.5,0,0,0,.838-.368V4.563a1.5,1.5,0,0,0-1.5-1.5H7.393a1.5,1.5,0,0,0-1.5,1.5V20.435a.5.5,0,0,0,.839.368L10.983,16.9A1.5,1.5,0,0,1,12,16.5Z");
+		builder.CloseElement();
+		builder.OpenElement(19, "path");
+		builder.AddAttribute(20, "d", "M14,10.28H12.5v1.5a.5.5,0,0,1-1,0v-1.5H10a.5.5,0,0,1,0-1h1.5V7.78a.5.5,0,0,1,1,0v1.5H14A.5.5,0,0,1,14,10.28Z");
+		builder.CloseElement();
+		builder.CloseElement();
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
