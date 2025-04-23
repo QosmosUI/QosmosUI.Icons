@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.FontAwesome.Solid;
+
+public class FaRoadCircleExclamation : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 640 512";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M213.2 32L288 32l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 74.8 0c27.1 0 51.3 17.1 60.3 42.6l42.7 120.6c-10.9-2.1-22.2-3.2-33.8-3.2c-59.5 0-112.1 29.6-144 74.8l0-42.8c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32c2.3 0 4.6-.3 6.8-.7c-4.5 15.5-6.8 31.8-6.8 48.7c0 5.4 .2 10.7 .7 16l-.7 0c-17.7 0-32 14.3-32 32l0 64L86.6 480C56.5 480 32 455.5 32 425.4c0-6.2 1.1-12.4 3.1-18.2L152.9 74.6C162 49.1 186.1 32 213.2 32zM496 224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm0 240a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm0-192c-8.8 0-16 7.2-16 16l0 80c0 8.8 7.2 16 16 16s16-7.2 16-16l0-80c0-8.8-7.2-16-16-16z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}

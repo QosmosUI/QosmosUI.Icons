@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.FontAwesome.Brands;
+
+public class FaPushed : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 432 512";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M407 111.9l-98.5-9 14-33.4c10.4-23.5-10.8-40.4-28.7-37L22.5 76.9c-15.1 2.7-26 18.3-21.4 36.6l105.1 348.3c6.5 21.3 36.7 24.2 47.7 7l35.3-80.8 235.2-231.3c16.4-16.8 4.3-42.9-17.4-44.8zM297.6 53.6c5.1-.7 7.5 2.5 5.2 7.4L286 100.9 108.6 84.6l189-31zM22.7 107.9c-3.1-5.1 1-10 6.1-9.1l248.7 22.7-96.9 230.7L22.7 107.9zM136 456.4c-2.6 4-7.9 3.1-9.4-1.2L43.5 179.7l127.7 197.6c-7 15-35.2 79.1-35.2 79.1zm272.8-314.5L210.1 337.3l89.7-213.7 106.4 9.7c4 1.1 5.7 5.3 2.6 8.6z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
