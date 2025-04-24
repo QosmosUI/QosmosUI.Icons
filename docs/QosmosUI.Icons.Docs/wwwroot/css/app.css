@@ -189,7 +189,7 @@
     }
 
     button {
-        @apply cusrsor-pointer;
+        cursor: pointer;
     }
 }
 
