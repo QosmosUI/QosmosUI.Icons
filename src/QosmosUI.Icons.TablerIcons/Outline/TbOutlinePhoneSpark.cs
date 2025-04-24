@@ -22,7 +22,7 @@ public class TbOutlinePhoneSpark : ComponentBase
     public string Fill { get; set; } = "none";
 
     [Parameter]
-    public string StrokeWidth { get; set; } = "0";
+    public string StrokeWidth { get; set; } = "2";
 
     [Parameter]
     public string StrokeLinecap { get; set; } = "round";
