@@ -77,7 +77,7 @@ public sealed class IconOrchestrator : IIconOrchestrator
 
         _logger.LogInformation("Found {Count} icon sets to generate", icons.Length);
 
-        var iconManifest = new ConcurrentBag<IconManifestItem>();
+        var iconManifest = new List<IconManifestItem>();
 
         foreach (var metadata in icons)
         {
@@ -174,7 +174,7 @@ public sealed class IconOrchestrator : IIconOrchestrator
         try
         {
             var manifestFilePath = Path.Combine(generatedDirectory, "manifest.json");
-            var manifestContent = JsonSerializer.Serialize(iconManifest.ToArray());
+            var manifestContent = JsonSerializer.Serialize(iconManifest);
 
             _logger.LogInformation("Generating manifest file: {FilePath}", manifestFilePath);
 
