@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsAotCompatible>true</IsAotCompatible>
+    <Version>1.0.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>QosmosUI.Icons</PackageId>
     <PackageIcon>QosmosUI.png</PackageIcon>
@@ -36,31 +37,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="QosmosUI.Icons.AntDesignIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.BootstrapIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.BoxIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.CircumIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.DevIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.Feather" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.FlatColorIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.FontAwesome" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.GameIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.GrommetIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.HeroIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.IcoMoonFree" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.Icons8LineAwesome" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.IonIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.Lucide" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.MaterialDesignIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.OctIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.RadixIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.RemixIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.SimpleIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.TablerIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.Themify" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.TypIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.VsCodeIcons" Version="1.0.0" />
-    <PackageReference Include="QosmosUI.Icons.WeatherIcons" Version="1.0.0" />
+    <PackageReference Include="QosmosUI.Icons.AntDesignIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.BootstrapIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.BoxIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.CircumIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.DevIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.Feather" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.FlatColorIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.FontAwesome" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.GameIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.GrommetIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.HeroIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.IcoMoonFree" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.Icons8LineAwesome" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.IonIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.Lucide" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.MaterialDesignIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.OctIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.RadixIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.RemixIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.SimpleIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.TablerIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.Themify" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.TypIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.VsCodeIcons" Version="1.0.1" />
+    <PackageReference Include="QosmosUI.Icons.WeatherIcons" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
