@@ -2,6 +2,7 @@
 // QosmosUI licenses this file to you under the MIT license.
 // See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -16,6 +17,7 @@ public class DynamicIcon : ComponentBase
     /// Gets or sets the type of the component to render.
     /// </summary>
     [Parameter]
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
     public Type? IconType { get; set; }
 
     /// <summary>
