@@ -1,0 +1,63 @@
+// Copyright (c) QosmosUI 2025.
+// QosmosUI licenses this file to you under the MIT license.
+// See the license here https://github.com/QosmosUI/QosmosUI/blob/main/LICENSE.
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+
+namespace QosmosUI.Icons.Icons8LineAwesome.Default;
+
+public class LiaWineGlassSolid : ComponentBase
+{
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Size { get; set; } = "1em";
+
+    [Parameter]
+    public string Stroke { get; set; } = "currentColor";
+
+    [Parameter]
+    public string Fill { get; set; } = "currentColor";
+
+    [Parameter]
+    public string StrokeWidth { get; set; } = "0";
+
+    [Parameter]
+    public string StrokeLinecap { get; set; } = "round";
+
+    [Parameter]
+    public string StrokeLinejoin { get; set; } = "round";
+
+    [Parameter]
+    public string ViewBox { get; set; } = "0 0 32 32";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "svg");
+        builder.AddAttribute(1, "xmlns", "http://www.w3.org/2000/svg");
+        builder.AddAttribute(2, "viewBox", ViewBox);
+        builder.AddAttribute(3, "width", Size);
+        builder.AddAttribute(4, "height", Size);
+        builder.AddAttribute(5, "fill", Fill);
+        builder.AddAttribute(6, "stroke", Stroke);
+        builder.AddAttribute(7, "stroke-width", StrokeWidth);
+        builder.AddAttribute(8, "stroke-linecap", StrokeLinecap);
+        builder.AddAttribute(9, "stroke-linejoin", StrokeLinejoin);
+        builder.AddMultipleAttributes(10, AdditionalAttributes);
+        if (!string.IsNullOrEmpty(Title))
+        {
+            builder.OpenElement(11, "title");
+            builder.AddContent(12, Title);
+            builder.CloseElement();
+        }
+		builder.OpenElement(13, "path");
+		builder.AddAttribute(14, "d", "M 8.3007812 5 L 8 5.5996094 C 7.4 6.8996094 7 8.7 7 11 C 7 15.6 10.5 19.400391 15 19.900391 L 15 26 L 10 26 L 10 28 L 22 28 L 22 26 L 17 26 L 17 19.900391 C 21.5 19.400391 25 15.6 25 11 C 25 8.7 24.6 6.8996094 24 5.5996094 L 23.800781 5 L 8.3007812 5 z M 9.5996094 7 L 22.400391 7 C 22.800391 8.2 23 9.6 23 11 C 23 13.1 22.099219 14.899219 20.699219 16.199219 L 20.599609 16.300781 C 20.499609 16.400781 20.400781 16.5 20.300781 16.5 C 20.200781 16.6 20.099609 16.599219 20.099609 16.699219 C 19.999609 16.799219 19.900781 16.800391 19.800781 16.900391 C 19.700781 17.000391 19.6 16.999609 19.5 17.099609 C 19.4 17.099609 19.300781 17.199219 19.300781 17.199219 C 19.200781 17.299219 19.100391 17.300391 18.900391 17.400391 C 18.800391 17.400391 18.699219 17.5 18.699219 17.5 C 18.599219 17.6 18.400781 17.599609 18.300781 17.599609 C 18.200781 17.599609 18.199609 17.699219 18.099609 17.699219 C 17.999609 17.699219 17.799219 17.800781 17.699219 17.800781 C 17.599219 17.800781 17.6 17.800391 17.5 17.900391 L 16.900391 17.900391 L 16.699219 17.900391 L 16 17.900391 C 12.1 17.900391 9 14.800391 9 10.900391 L 9 9.8007812 L 9 9.4003906 L 9.5996094 7 z");
+		builder.CloseElement();
+		builder.CloseElement();
+    }
+}
