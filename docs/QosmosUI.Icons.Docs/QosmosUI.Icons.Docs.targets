@@ -6,12 +6,9 @@
 
     <TailwindURL Condition="'$(OS)' == 'Windows_NT'">https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/tailwindcss-windows-x64.exe</TailwindURL>
     <TailwindFile Condition="'$(OS)' == 'Windows_NT'">$(TailwindFolder)\tailwindcss.exe</TailwindFile>
-
-    <TailwindURL Condition="'$(OS)' != 'Windows_NT'">https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/tailwindcss-linux-x64</TailwindURL>
-    <TailwindFile Condition="'$(OS)' != 'Windows_NT'">$(TailwindFolder)\tailwindcss</TailwindFile>
   </PropertyGroup>
 
-  <Target Name="RunTailwind" BeforeTargets="Build">
+  <Target Name="RunTailwind" BeforeTargets="Build" Condition="'$(OS)' == 'Windows_NT'">
     <CallTarget Targets="EnsureTailwindFolder" />
     <CallTarget Targets="InstallTailwindCSS" />
     <CallTarget Targets="CheckTailwindUpdates" />
@@ -20,11 +17,11 @@
     <CallTarget Targets="TailwindCSSRelease" Condition="'$(Configuration)' == 'Release'" />
   </Target>
 
-  <Target Name="EnsureTailwindFolder" BeforeTargets="InstallTailwindCSS">
+  <Target Name="EnsureTailwindFolder" BeforeTargets="InstallTailwindCSS" Condition="'$(OS)' == 'Windows_NT'">
     <MakeDir Directories="$(TailwindFolder)" Condition="!Exists('$(TailwindFolder)')" />
   </Target>
 
-  <Target Name="InstallTailwindCSS" AfterTargets="EnsureTailwindFolder" Condition="!Exists('$(TailwindFile)')">
+  <Target Name="InstallTailwindCSS" AfterTargets="EnsureTailwindFolder" Condition="!Exists('$(TailwindFile)') And '$(OS)' == 'Windows_NT'">
     <Message Text="Downloading TailwindCSS v$(TailwindVersion)..." Importance="high" />
 
     <Exec Command="curl -L -o $(TailwindFolder)\tailwind-temp $(TailwindURL)" />
@@ -35,7 +32,7 @@
     <WriteLinesToFile File="$(TailwindFolder)\version.txt" Lines="$(TailwindVersion)" Overwrite="true" />
   </Target>
 
-  <Target Name="CheckTailwindUpdates" AfterTargets="EnsureTailwindFolder" Condition="Exists('$(TailwindFolder)\version.txt')">
+  <Target Name="CheckTailwindUpdates" AfterTargets="EnsureTailwindFolder" Condition="Exists('$(TailwindFolder)\version.txt') And '$(OS)' == 'Windows_NT'">
     <ReadLinesFromFile File="$(TailwindFolder)\version.txt">
       <Output TaskParameter="Lines" PropertyName="InstalledTailwindVersion" />
     </ReadLinesFromFile>
@@ -49,7 +46,7 @@
     <CallTarget Targets="InstallTailwindCSS" Condition="'$(TailwindNeedsUpdate)' == 'true'" />
   </Target>
 
-  <Target Name="CheckTailwindCSSRebuild" DependsOnTargets="CheckTailwindUpdates;InstallTailwindCSS">
+  <Target Name="CheckTailwindCSSRebuild" DependsOnTargets="CheckTailwindUpdates;InstallTailwindCSS" Condition="'$(OS)' == 'Windows_NT'">
     <PropertyGroup>
       <TailwindInputHash>$([System.IO.File]::ReadAllText('$(TailwindInputCss)').GetHashCode())</TailwindInputHash>
       <TailwindCachedHash Condition="Exists('$(TailwindCacheFile)')">$([System.IO.File]::ReadAllText('$(TailwindCacheFile)'))</TailwindCachedHash>
@@ -65,12 +62,12 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="TailwindCSSDebug" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Debug' And '$(TailwindRebuildNeeded)' == 'true'">
+  <Target Name="TailwindCSSDebug" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Debug' And '$(TailwindRebuildNeeded)' == 'true' And '$(OS)' == 'Windows_NT'">
     <Message Text="Generating Tailwind CSS (Debug)..." Importance="high" />
     <Exec Command="$(TailwindFile) -i $(TailwindInputCss) -o $(TailwindOutputCss)" />
   </Target>
 
-  <Target Name="TailwindCSSRelease" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Release' And '$(TailwindRebuildNeeded)' == 'true'">
+  <Target Name="TailwindCSSRelease" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Release' And '$(TailwindRebuildNeeded)' == 'true' And '$(OS)' == 'Windows_NT'">
     <Message Text="Generating Tailwind CSS (Release - Minified)..." Importance="high" />
     <Exec Command="$(TailwindFile) -i $(TailwindInputCss) -o $(TailwindOutputCss) --minify" />
   </Target>
