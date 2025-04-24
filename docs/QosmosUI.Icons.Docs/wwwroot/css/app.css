@@ -11,8 +11,6 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-    --font-geist-sans: 'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-geist-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --radius: 0.5rem;
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(240, 10%, 3.9%);
@@ -84,6 +82,8 @@
 }
 
 @theme inline {
+    --font-geist-sans: 'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-geist-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -111,7 +111,6 @@
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
-    --color-sidebar: var(--sidebar);
     --color-sidebar-foreground: var(--sidebar-foreground);
     --color-sidebar-primary: var(--sidebar-primary);
     --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -176,6 +175,7 @@
         background: hsl(var(--border));
         border-radius: 5px;
     }
+
     * {
         scrollbar-width: thin;
         scrollbar-color: hsl(var(--border)) transparent;
@@ -186,6 +186,10 @@
         font-feature-settings: normal;
         font-variation-settings: normal;
         font-size: 1em
+    }
+
+    button {
+        @apply cusrsor-pointer;
     }
 }
 
