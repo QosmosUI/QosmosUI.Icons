@@ -50,5 +50,5 @@ public sealed class IconManifestItem
     /// Gets all sets of icons.
     /// </summary>
     [JsonIgnore]
-    public required Dictionary<string, List<Type>> Sets { get; init; } = [];
+    public Dictionary<string, List<Type>> Sets { get; init; } = [];
 }
