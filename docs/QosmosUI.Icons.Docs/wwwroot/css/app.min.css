@@ -326,6 +326,12 @@
   html {
     scroll-behavior: smooth;
   }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {
     [data-wrapper] {
       @media (width >= 1800px) {
