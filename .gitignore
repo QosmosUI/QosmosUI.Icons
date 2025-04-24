@@ -433,4 +433,4 @@ crashlytics-build.properties
 fabric.properties
 
 # TailwindCSS
-tailwindcss.exe
+.tailwind/
