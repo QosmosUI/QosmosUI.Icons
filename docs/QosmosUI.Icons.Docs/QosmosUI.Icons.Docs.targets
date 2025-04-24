@@ -1,0 +1,82 @@
+<Project>
+
+  <PropertyGroup>
+    <TailwindVersion>4.0.9</TailwindVersion>
+    <TailwindFolder>$(SolutionDir)\.tailwind</TailwindFolder>
+    <TailwindCacheFile>$(TailwindFolder)\tailwind.cache</TailwindCacheFile>
+
+    <TailwindURL Condition="'$(OS)' == 'Windows_NT'">https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/tailwindcss-windows-x64.exe</TailwindURL>
+    <TailwindFile Condition="'$(OS)' == 'Windows_NT'">$(TailwindFolder)\tailwindcss.exe</TailwindFile>
+
+    <TailwindURL Condition="'$(OS)' != 'Windows_NT'">https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/tailwindcss-linux-x64</TailwindURL>
+    <TailwindFile Condition="'$(OS)' != 'Windows_NT'">$(TailwindFolder)\tailwindcss</TailwindFile>
+
+    <TailwindInputCss>./wwwroot/css/globals.css</TailwindInputCss>
+    <TailwindOutputCss>./wwwroot/css/app.min.css</TailwindOutputCss>
+  </PropertyGroup>
+
+  <Target Name="RunTailwind" BeforeTargets="Build">
+    <CallTarget Targets="EnsureTailwindFolder" />
+    <CallTarget Targets="InstallTailwindCSS" />
+    <CallTarget Targets="CheckTailwindUpdates" />
+    <CallTarget Targets="CheckTailwindCSSRebuild" />
+    <CallTarget Targets="TailwindCSSDebug" Condition="'$(Configuration)' == 'Debug'" />
+    <CallTarget Targets="TailwindCSSRelease" Condition="'$(Configuration)' == 'Release'" />
+  </Target>
+
+  <Target Name="EnsureTailwindFolder" BeforeTargets="InstallTailwindCSS">
+    <MakeDir Directories="$(TailwindFolder)" Condition="!Exists('$(TailwindFolder)')" />
+  </Target>
+
+  <Target Name="InstallTailwindCSS" AfterTargets="EnsureTailwindFolder" Condition="!Exists('$(TailwindFile)')">
+    <Message Text="Downloading TailwindCSS v$(TailwindVersion)..." Importance="high" />
+
+    <Exec Command="curl -L -o $(TailwindFolder)\tailwind-temp $(TailwindURL)" />
+
+    <Exec Command="move $(TailwindFolder)\tailwind-temp $(TailwindFile)" Condition="'$(OS)' == 'Windows_NT'" />
+    <Exec Command="mv $(TailwindFolder)/tailwind-temp $(TailwindFile) &amp;&amp; chmod +x $(TailwindFile)" Condition="'$(OS)' != 'Windows_NT'" />
+
+    <WriteLinesToFile File="$(TailwindFolder)\version.txt" Lines="$(TailwindVersion)" Overwrite="true" />
+  </Target>
+
+  <Target Name="CheckTailwindUpdates" AfterTargets="EnsureTailwindFolder" Condition="Exists('$(TailwindFolder)\version.txt')">
+    <ReadLinesFromFile File="$(TailwindFolder)\version.txt">
+      <Output TaskParameter="Lines" PropertyName="InstalledTailwindVersion" />
+    </ReadLinesFromFile>
+
+    <PropertyGroup>
+      <TailwindNeedsUpdate>false</TailwindNeedsUpdate>
+      <TailwindNeedsUpdate Condition="'$(InstalledTailwindVersion)' != '$(TailwindVersion)'">true</TailwindNeedsUpdate>
+    </PropertyGroup>
+
+    <Delete Files="$(TailwindFile)" Condition="'$(TailwindNeedsUpdate)' == 'true'" />
+    <CallTarget Targets="InstallTailwindCSS" Condition="'$(TailwindNeedsUpdate)' == 'true'" />
+  </Target>
+
+  <Target Name="CheckTailwindCSSRebuild" DependsOnTargets="CheckTailwindUpdates;InstallTailwindCSS">
+    <PropertyGroup>
+      <TailwindInputHash>$([System.IO.File]::ReadAllText('$(TailwindInputCss)').GetHashCode())</TailwindInputHash>
+      <TailwindCachedHash Condition="Exists('$(TailwindCacheFile)')">$([System.IO.File]::ReadAllText('$(TailwindCacheFile)'))</TailwindCachedHash>
+      <TailwindCachedHash Condition="!Exists('$(TailwindCacheFile)')">-1</TailwindCachedHash>
+      <NeedRebuild>false</NeedRebuild>
+      <NeedRebuild Condition="'$(TailwindInputHash)' != '$(TailwindCachedHash)'">true</NeedRebuild>
+    </PropertyGroup>
+
+    <WriteLinesToFile File="$(TailwindCacheFile)" Lines="$(TailwindInputHash)" Overwrite="true" Condition="'$(NeedRebuild)' == 'true'" />
+
+    <PropertyGroup>
+      <TailwindRebuildNeeded>$(NeedRebuild)</TailwindRebuildNeeded>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="TailwindCSSDebug" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Debug' And '$(TailwindRebuildNeeded)' == 'true'">
+    <Message Text="Generating Tailwind CSS (Debug)..." Importance="high" />
+    <Exec Command="$(TailwindFile) -i $(TailwindInputCss) -o $(TailwindOutputCss)" />
+  </Target>
+
+  <Target Name="TailwindCSSRelease" AfterTargets="CheckTailwindCSSRebuild" Condition="'$(Configuration)' == 'Release' And '$(TailwindRebuildNeeded)' == 'true'">
+    <Message Text="Generating Tailwind CSS (Release - Minified)..." Importance="high" />
+    <Exec Command="$(TailwindFile) -i $(TailwindInputCss) -o $(TailwindOutputCss) --minify" />
+  </Target>
+
+</Project>
