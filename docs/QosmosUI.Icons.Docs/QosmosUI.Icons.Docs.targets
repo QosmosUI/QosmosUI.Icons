@@ -1,7 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <TailwindVersion>4.0.9</TailwindVersion>
     <TailwindFolder>$(SolutionDir)\.tailwind</TailwindFolder>
     <TailwindCacheFile>$(TailwindFolder)\tailwind.cache</TailwindCacheFile>
 
@@ -10,9 +9,6 @@
 
     <TailwindURL Condition="'$(OS)' != 'Windows_NT'">https://github.com/tailwindlabs/tailwindcss/releases/download/v$(TailwindVersion)/tailwindcss-linux-x64</TailwindURL>
     <TailwindFile Condition="'$(OS)' != 'Windows_NT'">$(TailwindFolder)\tailwindcss</TailwindFile>
-
-    <TailwindInputCss>./wwwroot/css/globals.css</TailwindInputCss>
-    <TailwindOutputCss>./wwwroot/css/app.min.css</TailwindOutputCss>
   </PropertyGroup>
 
   <Target Name="RunTailwind" BeforeTargets="Build">

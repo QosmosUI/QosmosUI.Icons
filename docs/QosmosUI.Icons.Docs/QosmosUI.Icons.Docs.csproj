@@ -6,6 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <TailwindVersion>4.0.9</TailwindVersion>
+    <TailwindInputCss>./wwwroot/css/app.css</TailwindInputCss>
+    <TailwindOutputCss>./wwwroot/css/app.min.css</TailwindOutputCss>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0"/>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all"/>
