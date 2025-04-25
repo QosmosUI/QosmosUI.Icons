@@ -298,7 +298,6 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
-node_modules/
 
 # Visual Studio 6 build log
 *.plg
@@ -432,5 +431,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# TailwindCSS
-.tailwind/
+# Node.js
+node_modules/
+npm-debug.log
+package-lock.json
