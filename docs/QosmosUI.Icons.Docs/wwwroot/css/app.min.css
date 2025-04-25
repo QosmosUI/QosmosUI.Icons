@@ -1,16 +1,17 @@
-/*! tailwindcss v4.0.9 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.4 | MIT License | https://tailwindcss.com */
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-    --color-zinc-50: oklch(0.985 0 0);
-    --color-zinc-700: oklch(0.37 0.013 285.805);
-    --color-zinc-900: oklch(0.21 0.006 285.885);
-    --color-zinc-950: oklch(0.141 0.005 285.823);
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-zinc-50: oklch(98.5% 0 0);
+    --color-zinc-700: oklch(37% 0.013 285.805);
+    --color-zinc-900: oklch(21% 0.006 285.885);
+    --color-zinc-950: oklch(14.1% 0.005 285.823);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -35,11 +36,7 @@
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
-    --default-font-feature-settings: var(--font-sans--font-feature-settings);
-    --default-font-variation-settings: var(--font-sans--font-variation-settings);
     --default-mono-font-family: var(--font-mono);
-    --default-mono-font-feature-settings: var(--font-mono--font-feature-settings);
-    --default-mono-font-variation-settings: var(--font-mono--font-variation-settings);
     --font-geist-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   }
 }
@@ -54,13 +51,10 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var( --default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' );
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
-  }
-  body {
-    line-height: inherit;
   }
   hr {
     height: 0;
@@ -84,7 +78,7 @@
     font-weight: bolder;
   }
   code, kbd, samp, pre {
-    font-family: var( --default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace );
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
     font-feature-settings: var(--default-mono-font-feature-settings, normal);
     font-variation-settings: var(--default-mono-font-variation-settings, normal);
     font-size: 1em;
@@ -150,7 +144,14 @@
   }
   ::placeholder {
     opacity: 1;
-    color: color-mix(in oklab, currentColor 50%, transparent);
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
   }
   textarea {
     resize: vertical;
@@ -174,13 +175,13 @@
   :-moz-ui-invalid {
     box-shadow: none;
   }
-  button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button {
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
     appearance: button;
   }
   ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
     height: auto;
   }
-  [hidden]:where(:not([hidden='until-found'])) {
+  [hidden]:where(:not([hidden="until-found"])) {
     display: none !important;
   }
 }
@@ -386,7 +387,7 @@
     flex-shrink: 0;
   }
   .transform {
-    transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .animate-fade-in {
     animation: fade-in 0.5s ease-out;
@@ -522,13 +523,19 @@
     background-color: var(--background);
   }
   .bg-background\/95 {
-    background-color: color-mix(in oklab, var(--background) 95%, transparent);
+    background-color: var(--background);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--background) 95%, transparent);
+    }
   }
   .bg-muted {
     background-color: var(--muted);
   }
   .bg-muted\/50 {
-    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+    background-color: var(--muted);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+    }
   }
   .bg-zinc-950 {
     background-color: var(--color-zinc-950);
@@ -670,7 +677,10 @@
     color: var(--foreground);
   }
   .text-foreground\/80 {
-    color: color-mix(in oklab, var(--foreground) 80%, transparent);
+    color: var(--foreground);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--foreground) 80%, transparent);
+    }
   }
   .text-muted-foreground {
     color: var(--muted-foreground);
@@ -782,7 +792,10 @@
   .hover\:text-foreground\/80 {
     &:hover {
       @media (hover: hover) {
-        color: color-mix(in oklab, var(--foreground) 80%, transparent);
+        color: var(--foreground);
+        @supports (color: color-mix(in lab, red, red)) {
+          color: color-mix(in oklab, var(--foreground) 80%, transparent);
+        }
       }
     }
   }
@@ -795,13 +808,13 @@
   }
   .focus-visible\:ring-1 {
     &:focus-visible {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .focus-visible\:ring-2 {
     &:focus-visible {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
@@ -834,7 +847,10 @@
   }
   .supports-\[backdrop-filter\]\:bg-background\/60 {
     @supports (backdrop-filter: var(--tw)) {
-      background-color: color-mix(in oklab, var(--background) 60%, transparent);
+      background-color: var(--background);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--background) 60%, transparent);
+      }
     }
   }
   .sm\:flex {
@@ -1076,85 +1092,6 @@
     content: "An error has occurred.";
   }
 }
-@layer components {
-  [data-rehype-pretty-code-fragment] {
-    position: relative;
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255/var(--tw-text-opacity));
-  }
-  [data-rehype-pretty-code-fragment] code {
-    display: grid;
-    min-width: 100%;
-    overflow-wrap: break-word;
-    border-radius: 0;
-    border-width: 0;
-    background-color: transparent;
-    padding: 0;
-    counter-reset: line;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
-  [data-rehype-pretty-code-fragment] .line {
-    display: inline-block;
-    min-height: 1rem;
-    width: 100%;
-    padding: .125rem 1rem;
-  }
-  [data-rehype-pretty-code-fragment] [data-line-numbers] .line {
-    padding-left: .5rem;
-    padding-right: .5rem;
-  }
-  [data-rehype-pretty-code-fragment] [data-line-numbers]>.line:before {
-    font-size: .75rem;
-    line-height: 1rem;
-    color: hsla(0,0%,98%,.4);
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 1.8rem;
-    margin-right: 1.4rem;
-    text-align: right;
-  }
-  [data-rehype-pretty-code-fragment] .line--highlighted {
-    background-color: rgba(63,63,70,.5);
-  }
-  [data-rehype-pretty-code-fragment] .line-highlighted span {
-    position: relative;
-  }
-  [data-rehype-pretty-code-fragment] .word--highlighted {
-    border-radius: calc(var(--radius) - 2px);
-    border-color: rgba(63,63,70,.7);
-    background-color: rgba(63,63,70,.5);
-    padding: .25rem;
-  }
-  .dark [data-rehype-pretty-code-fragment] .word--highlighted {
-    --tw-bg-opacity: 1;
-    background-color: rgb(24 24 27/var(--tw-bg-opacity));
-  }
-  [data-rehype-pretty-code-title] {
-    margin-top: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1.5rem;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
-    color: hsl(var(--foreground));
-  }
-  [data-rehype-pretty-code-title]+pre {
-    margin-top: .5rem;
-  }
-  .mdx>.steps:first-child>h3:first-child {
-    margin-top: 0;
-  }
-  .steps>h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 600;
-  }
-}
 :root {
   --radius: 0.5rem;
   --background: hsl(0, 0%, 100%);
@@ -1227,7 +1164,10 @@
 @layer base {
   * {
     border-color: var(--border);
-    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    outline-color: var(--ring);
+    @supports (color: color-mix(in lab, red, red)) {
+      outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    }
   }
   html {
     scroll-behavior: smooth;
@@ -1412,7 +1352,10 @@
   .border-grid {
     --tw-border-style: dashed;
     border-style: dashed;
-    border-color: color-mix(in oklab, var(--border) 50%, transparent);
+    border-color: var(--border);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--border) 50%, transparent);
+    }
     &:is(.dark *) {
       border-color: var(--border);
     }
@@ -1423,7 +1366,10 @@
     max-width: 1400px;
     --tw-border-style: dashed;
     border-style: dashed;
-    border-color: color-mix(in oklab, var(--border) 70%, transparent);
+    border-color: var(--border);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--border) 70%, transparent);
+    }
     @media (width >= 1400px) {
       border-inline-style: var(--tw-border-style);
       border-inline-width: 1px;
@@ -1447,27 +1393,22 @@
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false;
-  initial-value: rotateX(0);
 }
 @property --tw-rotate-y {
   syntax: "*";
   inherits: false;
-  initial-value: rotateY(0);
 }
 @property --tw-rotate-z {
   syntax: "*";
   inherits: false;
-  initial-value: rotateZ(0);
 }
 @property --tw-skew-x {
   syntax: "*";
   inherits: false;
-  initial-value: skewX(0);
 }
 @property --tw-skew-y {
   syntax: "*";
   inherits: false;
-  initial-value: skewY(0);
 }
 @property --tw-space-y-reverse {
   syntax: "*";
@@ -1505,6 +1446,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
 @property --tw-inset-shadow {
   syntax: "*";
   inherits: false;
@@ -1513,6 +1459,11 @@
 @property --tw-inset-shadow-color {
   syntax: "*";
   inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
 }
 @property --tw-ring-color {
   syntax: "*";
@@ -1608,5 +1559,46 @@
   }
   50% {
     transform: translateY(-18px);
+  }
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-space-x-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-content: "";
+    }
   }
 }

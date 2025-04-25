@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@import "tw-animate-css";
+
 @import "./blazor.css";
 
 @source "../../{Components,Pages}/**/*.{razor,razor.cs}";
