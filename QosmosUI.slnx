@@ -1,7 +1,4 @@
 <Solution>
-  <Folder Name="/docs/">
-    <Project Path="docs\QosmosUI.Icons.Docs\QosmosUI.Icons.Docs.csproj" Type="Classic C#" />
-  </Folder>
   <Folder Name="/src/">
     <Project Path="src\QosmosUI.Icons.AntDesignIcons\QosmosUI.Icons.AntDesignIcons.csproj" Type="Classic C#" />
     <Project Path="src\QosmosUI.Icons.BootstrapIcons\QosmosUI.Icons.BootstrapIcons.csproj" Type="Classic C#" />
